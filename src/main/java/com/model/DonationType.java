@@ -2,8 +2,8 @@ package com.model;
 
 public enum DonationType {
 	MONEY, 
-	CLOTHS, 
+	CLOTHES, 
 	BOOKS, 
 	EDIBLE, 
-	OTHER;
+	OTHER
 }

@@ -12,9 +12,9 @@ public interface IEmployeeService {
 
 	public boolean login(Employee employee) throws NoSuchEmployeeException, SQLException;
 
-	public boolean addNeedyPerson(NeedyPeople person);
+	public NeedyPeople addNeedyPerson(NeedyPeople person);
 
-	public boolean removeNeedyPerson(NeedyPeople person);
+	public void removeNeedyPerson(NeedyPeople person);
 
 	public NeedyPeople findNeedyPeopleById(int id);
 

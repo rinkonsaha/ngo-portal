@@ -16,33 +16,30 @@ import com.model.NeedyPeople;
 public class EmployeeServiceImpl implements IEmployeeService {
 	
 	@Autowired
-	IEmployeeDao empDao;
-	
-	
+	private IEmployeeDao empDao;
 
 	@Override
 	public boolean login(Employee employee) throws NoSuchEmployeeException, SQLException {
-
 		return empDao.login(employee);
 	}
 
 	@Override
-	public boolean addNeedyPerson(NeedyPeople person) {
-		
-		return empDao.createNeedyPerson(person);
+	public NeedyPeople addNeedyPerson(NeedyPeople person) {
+		empDao.save(person);
+		return person;
 		
 	}
 
 	@Override
-	public boolean removeNeedyPerson(NeedyPeople person) {
-
-		return empDao.deleteNeedyPerson(person);
+	public void removeNeedyPerson(NeedyPeople person) {
+		empDao.delete(person);
+		//return empDao.deleteNeedyPerson(person);
 	}
 
 	@Override
 	public NeedyPeople findNeedyPeopleById(int id) {
 
-		return null;
+		return empDao.findById(id).get();
 	}
 
 	@Override
@@ -52,13 +49,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Override
 	public List<NeedyPeople> findAllNeedyPeople() {
-
-		return empDao.readAllNeedyPeople();
+		return empDao.findAll();
 	}
 
 	@Override
 	public String helpNeedyPerson(DonationDistribution distribute) {
-
 		return empDao.helpNeedyPerson(distribute);
 	}
 
