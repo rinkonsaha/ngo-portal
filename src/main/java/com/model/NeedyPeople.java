@@ -1,8 +1,12 @@
 package com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class NeedyPeople {
@@ -13,6 +17,9 @@ public class NeedyPeople {
 	private String needyPersonName;
 	private String phone;
 	private double familyIncome;
+	
+	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
 	private Address address;
 	
 	

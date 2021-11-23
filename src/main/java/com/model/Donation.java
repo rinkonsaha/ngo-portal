@@ -2,9 +2,12 @@ package com.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Donation {
@@ -12,10 +15,17 @@ public class Donation {
 	@Id
 	@GeneratedValue
 	private int donationId;
-	private Donor donor;
-	private DonationItem item;
+	
 	private double donationAmount;
 	private Date donationDate;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="donor_id")
+	private Donor donor;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="item_id")
+	private DonationItem item;
 
 	public int getDonationId() {
 		return donationId;

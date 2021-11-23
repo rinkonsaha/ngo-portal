@@ -18,10 +18,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	@Autowired
 	private IEmployeeDao empDao;
 
-	@Override
-	public boolean login(Employee employee) throws NoSuchEmployeeException, SQLException {
-		return empDao.login(employee);
-	}
+	/*
+	 * @Override public boolean login(Employee employee) throws
+	 * NoSuchEmployeeException, SQLException { return empDao.login(employee); }
+	 */
 
 	@Override
 	public NeedyPeople addNeedyPerson(NeedyPeople person) {
@@ -42,19 +42,19 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return empDao.findById(id).get();
 	}
 
-	@Override
-	public List<NeedyPeople> findNeedyPeopleByName(String name) {
-		return empDao.readNeedyPeopleByName(name);
-	}
+	/*
+	 * @Override public List<NeedyPeople> findNeedyPeopleByName(String name) {
+	 * return empDao.readNeedyPeopleByName(name); }
+	 */
 
 	@Override
 	public List<NeedyPeople> findAllNeedyPeople() {
 		return empDao.findAll();
 	}
 
-	@Override
-	public String helpNeedyPerson(DonationDistribution distribute) {
-		return empDao.helpNeedyPerson(distribute);
-	}
+	/*
+	 * @Override public String helpNeedyPerson(DonationDistribution distribute) {
+	 * return empDao.helpNeedyPerson(distribute); }
+	 */
 
 }

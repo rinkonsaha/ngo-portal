@@ -2,9 +2,12 @@ package com.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class DonationDistribution {
@@ -12,13 +15,25 @@ public class DonationDistribution {
 	@Id
 	@GeneratedValue
 	private int distributionId;
-	private NeedyPeople person;
-	private DonationItem item;
-	private Employee distributedBy;
+	//private NeedyPeople person;
+	//private DonationItem item;
+	//private Employee distributedBy;
 	private double amountDistributed;
 	private Date dateOfDistribution;
 	private Date approvalOrRejectedDate;
 	private DonationDistributionStatus status;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="needy_person_id")
+	private NeedyPeople person;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="employee_id")
+	private Employee distributedBy;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="item_id")
+	private DonationItem item;
 
 	// getters and setters
 	public int getDistributionId() {

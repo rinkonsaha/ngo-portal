@@ -1,8 +1,11 @@
 package com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Employee {
@@ -13,9 +16,14 @@ public class Employee {
 	private String employeeName;
 	private String email;
 	private String phone;
-	private Address address;
+	
 	private String username;
 	private String password;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
+	
 	
 	public int getEmployeeId() {
 		return employeeId;
