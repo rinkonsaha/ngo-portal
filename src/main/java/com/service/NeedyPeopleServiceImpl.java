@@ -1,7 +1,7 @@
 package com.service;
 
-import com.dao.INeedyPeopleDao;
 import com.model.NeedyPeople;
+import com.repository.NeedyPeopleRepository;
 
 public class NeedyPeopleServiceImpl {
 	

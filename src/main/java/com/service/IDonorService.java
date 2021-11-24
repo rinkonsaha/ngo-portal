@@ -11,16 +11,16 @@ public interface IDonorService {
 
 	public boolean registerDonor(Donor donor) throws DuplicateDonorException, SQLException;
 
-	public boolean login(Donor donor) throws NoSuchDonorException, SQLException;
+	public Donor login(Donor donor) throws NoSuchDonorException, SQLException;
 
 	public Donation donateToNGO(Donation donation);
 
-	public void sendThankyouMailToDonator(Donor donor);
+	public String sendThankyouMailToDonator(Donor donor);
 
 	public String forgotPassword(String username);
 
 	public String resetPassword(String username);
 
-	public void emailPasswordToDonor(String email);
+	public String emailPasswordToDonor(String email);
 
 }

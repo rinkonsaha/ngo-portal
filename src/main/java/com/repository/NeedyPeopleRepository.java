@@ -1,8 +1,8 @@
-package com.dao;
+package com.repository;
 
 import com.model.NeedyPeople;
 
-public interface INeedyPeopleDao {
+public interface NeedyPeopleRepository {
 
 	public boolean createNeedyPerson(NeedyPeople person);
 
