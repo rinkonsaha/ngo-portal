@@ -25,7 +25,7 @@ public class AdminServiceImpl implements IAdminService {
 	@Override
 	public Employee addEmployee(Employee employee) throws DuplicateEmployeeException, SQLException {
 		int id = employee.getEmployeeId();
-		if (id != 0) {
+		if (id == 0) {
 			throw new DuplicateEmployeeException();
 		} else {
 			emp = adminRepo.save(employee);
@@ -66,14 +66,14 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public List<Employee> findEmployeeById(int employeeId) throws NoSuchEmployeeException {
+	public Employee findEmployeeById(int employeeId) throws NoSuchEmployeeException {
 		Optional<Employee> optional = adminRepo.findById(employeeId);
 		Employee emp = optional.get();
 		if (optional.isPresent()) {
 			adminRepo.getById(employeeId);
-			return (List<Employee>) emp;
+			return emp;
 		} else
-			throw new NoSuchEmployeeException("employee doesnt found");
+			throw new NoSuchEmployeeException("No Such Employee Found");
 
 	}
 

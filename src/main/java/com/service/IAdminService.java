@@ -19,7 +19,7 @@ public interface IAdminService {
 
 	public String removeEmployee(int employeeId) throws NoSuchEmployeeException;
 
-	public List<Employee> findEmployeeById(int employeeId) throws NoSuchEmployeeException;
+	public Employee findEmployeeById(int employeeId) throws NoSuchEmployeeException;
 
 	public List<Employee> findEmployeeByName(String name) throws NoSuchEmployeeException;
 

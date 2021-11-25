@@ -65,10 +65,10 @@ public class AdminController {
 	}
 
 	@GetMapping("/employee/{employeeId}")
-	public ResponseEntity<List<Employee>> findEmployeeById(@PathVariable int employeeId)
+	public ResponseEntity<Employee> findEmployeeById(@PathVariable int employeeId)
 			throws NoSuchEmployeeException {
-		List<Employee> lc = adminService.findEmployeeById(employeeId);
-		ResponseEntity re = new ResponseEntity<List<Employee>>(lc, HttpStatus.OK);
+		Employee e = adminService.findEmployeeById(employeeId);
+		ResponseEntity re = new ResponseEntity<Employee>(e, HttpStatus.OK);
 		return re;
 	}
 
