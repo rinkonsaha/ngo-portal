@@ -44,6 +44,7 @@ public class AdminServiceImpl implements IAdminService {
 	public Employee modifyEmployee(Employee employee) throws Throwable {
 		int id = employee.getEmployeeId();
 		Supplier s1 = () -> new NoSuchEmployeeException("Employee Does not exist in the database");
+		@SuppressWarnings("unchecked")
 		Employee emp = adminRepo.findById(id).orElseThrow(s1);
 
 		emp.setEmployeeName(emp.getEmployeeName());

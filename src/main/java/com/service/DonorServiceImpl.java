@@ -1,8 +1,10 @@
 package com.service;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.exception.DuplicateDonorException;
 import com.exception.NoSuchDonorException;
@@ -11,6 +13,7 @@ import com.model.Donor;
 import com.repository.DonationRepository;
 import com.repository.DonorRepository;
 
+@Service
 public class DonorServiceImpl implements IDonorService{
 	
 	@Autowired
@@ -20,8 +23,15 @@ public class DonorServiceImpl implements IDonorService{
 	DonationRepository donationRepository;
 	
 	@Override
-	public boolean registerDonor(Donor donor) throws DuplicateDonorException {
-		return false;
+	public Donor registerDonor(Donor donor) throws DuplicateDonorException {
+		String email= donorRepository.checkIfUserAlreadyExists(donor.getDonorEmail());
+		if(email == donor.getDonorEmail()){
+	            throw new DuplicateDonorException("User already exists for this email");
+	        }
+		else
+		{
+			return donorRepository.save(donor);
+		}
 	}
 
 	@Override
@@ -54,14 +64,12 @@ public class DonorServiceImpl implements IDonorService{
 
 	@Override
 	public String forgotPassword(String username) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String resetPassword(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return username;
 	}
 
 	@Override

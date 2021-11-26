@@ -3,6 +3,7 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class DonationBox {
@@ -11,6 +12,7 @@ public class DonationBox {
 	@Id
 	@GeneratedValue
 	private String registrationNumber;
+	@NotNull
 	private String accountNumber;
 	private double totalCollection;
 

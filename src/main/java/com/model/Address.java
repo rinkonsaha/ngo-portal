@@ -3,6 +3,7 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Address {
@@ -11,9 +12,13 @@ public class Address {
 	@Id
 	@GeneratedValue
 	private int addressId;
+	@NotNull
 	private String city;
+	@NotNull
 	private String state;
+	@NotNull
 	private String pin;
+	@NotNull
 	private String landmark;
 	
 	//Getters and Setters

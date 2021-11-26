@@ -17,7 +17,7 @@ import com.model.NeedyPeople;
 import com.service.IEmployeeService;
 
 @RestController
-@RequestMapping(path="/employees")
+@RequestMapping(path="/needy")
 public class EmployeeController {
 	
 	@Autowired
@@ -41,13 +41,6 @@ public class EmployeeController {
 		NeedyPeople p=empService.findNeedyPeopleById(id);
 		return new ResponseEntity<NeedyPeople>(p, HttpStatus.OK);
 	}
-	
-	/*
-	 * @GetMapping(path="/getNeedyPeopleByName/{name}") public
-	 * ResponseEntity<List<NeedyPeople>> getNeedyPeopleByName(@PathVariable("name")
-	 * String name) { List<NeedyPeople> l=empService.findNeedyPeopleByName(name);
-	 * return new ResponseEntity<List<NeedyPeople>>(l, HttpStatus.OK); }
-	 */
 	
 	@GetMapping(path="/getAllNeedyPeople")
 	public ResponseEntity<List<NeedyPeople>> getAllNeedyPeople() {

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class NeedyPeople {
@@ -14,7 +15,9 @@ public class NeedyPeople {
 	@Id
     @GeneratedValue
 	private int needyPersonId;
+	@NotNull
 	private String needyPersonName;
+	@NotNull
 	private String phone;
 	private double familyIncome;
 	

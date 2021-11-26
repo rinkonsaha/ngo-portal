@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Employee {
@@ -13,11 +17,18 @@ public class Employee {
 	@Id
 	@GeneratedValue
 	private int employeeId;
+	@NotNull
+	@Size(min=3,message="First Name should have atleast 3 characters")
 	private String employeeName;
+	@NotNull
+	@Email
 	private String email;
+	@NotEmpty
 	private String phone;
-	
+	@NotEmpty
 	private String username;
+	@NotNull
+	@Size(min=8,message="password should have atleast 8 characters")
 	private String password;
 	
 	@OneToOne(cascade=CascadeType.ALL)

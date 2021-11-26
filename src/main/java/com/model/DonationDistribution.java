@@ -4,10 +4,13 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class DonationDistribution {
@@ -19,8 +22,11 @@ public class DonationDistribution {
 	//private DonationItem item;
 	//private Employee distributedBy;
 	private double amountDistributed;
+	@NotNull
 	private Date dateOfDistribution;
+	@NotNull
 	private Date approvalOrRejectedDate;
+	@Enumerated(EnumType.STRING)
 	private DonationDistributionStatus status;
 	
 	@OneToOne(cascade=CascadeType.ALL)

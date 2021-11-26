@@ -60,11 +60,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return empRepo.findById(id).get();
 	}
 
-	/*
-	 * @Override public List<NeedyPeople> findNeedyPeopleByName(String name) {
-	 * return empDao.readNeedyPeopleByName(name); }
-	 */
-
 	@Override
 	public List<NeedyPeople> findAllNeedyPeople() {
 		return empRepo.findAll();

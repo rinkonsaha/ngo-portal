@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Donation {
@@ -17,6 +18,7 @@ public class Donation {
 	private int donationId;
 	
 	private double donationAmount;
+	@NotNull
 	private Date donationDate;
 	
 	@OneToOne(cascade=CascadeType.ALL)

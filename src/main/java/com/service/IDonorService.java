@@ -2,16 +2,19 @@ package com.service;
 
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Service;
+
 import com.exception.DuplicateDonorException;
 import com.exception.NoSuchDonorException;
 import com.model.Donation;
 import com.model.Donor;
 
+@Service
 public interface IDonorService {
 
-	public boolean registerDonor(Donor donor) throws DuplicateDonorException, SQLException;
+	public Donor registerDonor(Donor donor) throws DuplicateDonorException;
 
-	public Donor login(Donor donor) throws NoSuchDonorException, SQLException;
+	public Donor login(Donor donor) throws NoSuchDonorException;
 
 	public Donation donateToNGO(Donation donation);
 
