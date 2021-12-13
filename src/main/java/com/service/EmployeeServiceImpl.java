@@ -20,25 +20,23 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Autowired
 	private EmployeeRepository empRepo;
-	
+
 	@Autowired
 	private AdminRepository adminRepo;
 
 	@Override
 	public Employee login(Employee employee) throws NoSuchEmployeeException, SQLException {
-		Employee emp=adminRepo.findById(employee.getEmployeeId()).orElse(null);
-		if(emp==null) {
-			String noSuchEmployee="No Donor found by the donor id"+employee.getEmployeeId();
-			throw new  NoSuchEmployeeException(noSuchEmployee);
-		}
-		else {
-			if(employee.getUsername().equals(emp.getUsername()) && employee.getPassword().equals(emp.getPassword())){
+		Employee emp = adminRepo.findById(employee.getEmployeeId()).orElse(null);
+		if (emp == null) {
+			String noSuchEmployee = "No Donor found by the donor id" + employee.getEmployeeId();
+			throw new NoSuchEmployeeException(noSuchEmployee);
+		} else {
+			if (employee.getUsername().equals(emp.getUsername()) && employee.getPassword().equals(emp.getPassword())) {
 				return emp;
-			}
-			else {
+			} else {
 				throw new NoSuchEmployeeException("Employee username and password are invalid");
 			}
-		}	
+		}
 	}
 
 	@Override
@@ -49,8 +47,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public void removeNeedyPerson(NeedyPeople person) {
-		empRepo.delete(person);
+	public void removeNeedyPerson(int id) {
+		empRepo.deleteById(id);
 		// return empDao.deleteNeedyPerson(person);
 	}
 
@@ -65,9 +63,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return empRepo.findAll();
 	}
 
-	/*
-	 * @Override public String helpNeedyPerson(DonationDistribution distribute) {
-	 * return empDao.helpNeedyPerson(distribute); }
-	 */
+	@Override
+	public String helpNeedyPerson(DonationDistribution distribute) {
+		return "Donation accepted "+ distribute;
+	}
 
 }

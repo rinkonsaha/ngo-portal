@@ -17,14 +17,12 @@ public interface IEmployeeService {
 
 	public NeedyPeople addNeedyPerson(NeedyPeople person);
 
-	public void removeNeedyPerson(NeedyPeople person);
+	public void removeNeedyPerson(int id);
 
 	public NeedyPeople findNeedyPeopleById(int id);
 
-	//public List<NeedyPeople> findNeedyPeopleByName(String name);
-
 	public List<NeedyPeople> findAllNeedyPeople();
 
-	//public String helpNeedyPerson(DonationDistribution distribute);
+	public String helpNeedyPerson(DonationDistribution distribute);
 
 }
