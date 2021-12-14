@@ -2,6 +2,7 @@ package com.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +66,22 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 	@Override
 	public String helpNeedyPerson(DonationDistribution distribute) {
-		return "Donation accepted "+ distribute;
+		return "Donation accepted " + distribute;
+	}
+
+	@Override
+	public NeedyPeople modifyNeedyPerson(int id, NeedyPeople person) {
+		Optional<NeedyPeople> optional = empRepo.findById(id);
+		if (optional.isPresent()) {
+			NeedyPeople p = optional.get();
+
+			p.setNeedyPersonName(person.getNeedyPersonName());
+			p.setPhone(person.getPhone());
+			p.setFamilyIncome(person.getFamilyIncome());
+
+			return empRepo.save(p);
+		}
+		return null;
 	}
 
 }

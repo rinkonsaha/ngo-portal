@@ -18,6 +18,8 @@ public interface IEmployeeService {
 	public NeedyPeople addNeedyPerson(NeedyPeople person);
 
 	public void removeNeedyPerson(int id);
+	
+	public NeedyPeople modifyNeedyPerson(int id, NeedyPeople person);
 
 	public NeedyPeople findNeedyPeopleById(int id);
 
