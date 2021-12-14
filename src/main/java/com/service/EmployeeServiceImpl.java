@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.exception.NoSuchDonorException;
 import com.exception.NoSuchEmployeeException;
+import com.model.Address;
 import com.model.DonationDistribution;
 import com.model.Donor;
 import com.model.Employee;
@@ -78,6 +79,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 			p.setNeedyPersonName(person.getNeedyPersonName());
 			p.setPhone(person.getPhone());
 			p.setFamilyIncome(person.getFamilyIncome());
+			p.setAddress(person.getAddress());
 
 			return empRepo.save(p);
 		}

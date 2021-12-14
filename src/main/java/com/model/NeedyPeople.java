@@ -21,9 +21,9 @@ public class NeedyPeople {
 	private String phone;
 	private double familyIncome;
 	
-//	@OneToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-//	@JoinColumn(name="address_id")
-//	private Address address;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	
 	public int getNeedyPersonId() {
@@ -50,12 +50,12 @@ public class NeedyPeople {
 	public void setFamilyIncome(double familyIncome) {
 		this.familyIncome = familyIncome;
 	}
-//	public Address getAddress() {
-//		return address;
-//	}
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	
 	@Override
 	public String toString() {
