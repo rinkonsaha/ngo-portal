@@ -13,7 +13,11 @@ import com.model.Donor;
 
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Integer> {
-	@Query(value="select count(d.donor_email)from donor d having count(d.donor_email)<=1",nativeQuery=true)
-	String checkIfUserAlreadyExists(String donorEmail);
+	
+	@Query(value="Select donor_email from donor",nativeQuery = true)
+	 String checkIfUserAlreadyExists(String donorEmail);
+
+	 @Query("SELECT donor FROM Donor donor WHERE LOWER(donor.donorEmail) = LOWER(:donorEmail)")
+	Donor findByEmailIdIgnoreCase(@Param("donorEmail") String donorEmail);
 
 }

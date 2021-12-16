@@ -25,8 +25,8 @@ public class DonationItem {
 	@Enumerated(EnumType.STRING)
 	private DonationType item;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	private Donation donation;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	private Donation donation;
 	
 	public int getItemId() {
 		return itemId;
@@ -49,7 +49,7 @@ public class DonationItem {
 	@Override
 	public String toString() {
 		return "DonationItem [itemId=" + itemId + ", itemDescription=" + itemDescription + ", item=" + item
-				+ ", donation=" + donation + "]";
+				+ "]";
 	}
 
 }
